@@ -1,5 +1,4 @@
 #include "monty.h"
-global_var var_global;
 /**
  * main - function for monty program
  * @arc: num of arguments
@@ -8,16 +7,12 @@ global_var var_global;
  */
 int main(int arc, char **arv)
 {
-	stack_t *stack;
-
-	stack = NULL;
 	if (arc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
-	read_file(arv[1], &stack);
-	free_dlistint(stack);
+	file_handle(arv[1]);
 	return (0);
 }

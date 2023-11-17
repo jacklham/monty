@@ -1,11 +1,11 @@
-#include <stdio.h>
+#include "monty.h"
 
 /**
  * push - push int to a stack
  * @stack: linked lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *new_element;
 	(void)line_number;
@@ -30,7 +30,7 @@ void push(stack_t **stack, unsigned int line_number)
  * @stack: pointer to linked list stack
  * @line_number: number of line opcode occurs on
  */
-void pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *current_element;
 

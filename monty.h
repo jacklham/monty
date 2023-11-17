@@ -1,5 +1,9 @@
 #ifndef MONTY_H
 #define MONTY_H
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d5b5420a772027989e7744254a31d9148d8f812
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,7 +36,7 @@ typedef struct stack_s
  * for stack, queues, LIFO, FIFO
  */
 typedef struct instruction_s
-{
+
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
@@ -54,36 +58,41 @@ typedef struct global_variable
 
 extern global_var var_global;
 
-void read_file(char *filename, stack_t **stack);
-char *parse_line(char *line, stack_t **stack, unsigned int line_number);
-typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
-instruct_func get_op_func(char *str);
+/*Function to Handle file*/
+void file_handle(char *file_name);
+void read_file(FILE *fptr);
+int parse_line(char *buffer, int line, int type_ds);
 
+<<<<<<< HEAD
 /*fucntions monty*/
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+=======
+/*fucntions monty
+>>>>>>> 3d5b5420a772027989e7744254a31d9148d8f812
 void _add(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _print_string(stack_t **stk, unsigned int line_num);
 void _rotate_left(stack_t **stack, unsigned int line_num);
 void _rotate_right(stack_t **stack, unsigned int line_num);
+*/
 
-/*func maths*/
+/**func maths
 void subtractTopTwo(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
 void multiplyTopTwo(stack_t **stack, unsigned int line_number);
 void divideTopTwo(stack_t **stack, unsigned int line_number);
 void moduloTopTwo(stack_t **stack, unsigned int line_number);
+*/
 
-
-/*Utility functions*/
+/**Utility functions
 void free_dlistint(stack_t *head);
 void dobfree(stack_t **stack);
 void dobfree2(stack_t **stack);
 int _isalpha(int c);
 
-/*Function to handle files*/
+*Function to handle files
 void file(char *the_file);
-
+*/
 
 #endif
