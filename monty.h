@@ -1,8 +1,11 @@
-#ifndef MONTY_H
-#define MONTY_H
+#ifndef MONTY_OPERATIONS_H
+#define MONTY_OPERATIONS_H
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -15,9 +18,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -30,10 +33,51 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct global_variable - opcoode and its function
+ * @file: the opcode
+ * @push_arg: function to handle the opcode
+ * @buffer: pointer to
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO ALX project
+ */
+typedef struct global_variable
+{
+	FILE *file;
+	int push_arg;
+	char *buffer;
+} global_var;
+
+extern global_var var_global;
+
+void read_file(char *filename, stack_t **stack);
+char *parse_line(char *line, stack_t **stack, unsigned int line_number);
+typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
+instruct_func get_op_func(char *str);
+
+/*fucntions monty*/
+void _add(stack_t **stack, unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
+void _rotl(stack_t **stack, unsigned int line_number);
+void _rotr(stack_t **stack, unsigned int line_number);
+
+/*func maths*/
+void subtractTopTwo(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
+void multiplyTopTwo(stack_t **stack, unsigned int line_number);
+void divideTopTwo(stack_t **stack, unsigned int line_number);
+void moduloTopTwo(stack_t **stack, unsigned int line_number);
+
+
+/*Utility functions*/
+void free_dlistint(stack_t *head);
+void dobfree(stack_t **stack);
+void dobfree2(stack_t **stack);
+int _isalpha(int c);
 
 /*Function to handle files*/
 void file(char *the_file);
