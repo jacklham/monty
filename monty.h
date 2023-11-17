@@ -1,5 +1,5 @@
-#ifndef MONTY_OPERATIONS_H
-#define MONTY_OPERATIONS_H
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -60,6 +60,8 @@ typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 instruct_func get_op_func(char *str);
 
 /*fucntions monty*/
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _print_string(stack_t **stk, unsigned int line_num);
