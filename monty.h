@@ -62,8 +62,9 @@ instruct_func get_op_func(char *str);
 /*fucntions monty*/
 void _add(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
-void _rotl(stack_t **stack, unsigned int line_number);
-void _rotr(stack_t **stack, unsigned int line_number);
+void _print_string(stack_t **stk, unsigned int line_num);
+void _rotate_left(stack_t **stack, unsigned int line_num);
+void _rotate_right(stack_t **stack, unsigned int line_num);
 
 /*func maths*/
 void subtractTopTwo(stack_t **stack, unsigned int line_number);
