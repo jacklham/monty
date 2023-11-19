@@ -125,8 +125,11 @@ void choose_op(char *opcode, char *value, int line, int type_ds)
 
 /**
  * execut - function that execute the operation
+ *
  * @f: function pointer
+ *
  * @opcode: char pointer
+ *
  * @value: value of the number
  *
  * @line: The number of line

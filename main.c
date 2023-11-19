@@ -2,11 +2,11 @@
 
 /**
  * main - function for monty program
- * @argc: num of arguments
- * @argv: opcode file
+ * @arc: num of arguments
+ * @arv: opcode file
  * Return: 0
  */
-int main(int argc, char **argv)
+int main(int arc, char **arv)
 {
 	if (arc != 2)
 	{
