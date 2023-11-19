@@ -113,6 +113,9 @@ void choose_op(char *opcode, char *value, int line, int type_ds)
 		{NULL, NULL}
 	};
 
+	if (opcode[0] == '#')
+		return;
+
 	for (i = 0; operation[i].opcode != NULL; i++)
 	{
 		if (strcmp(operation[i].opcode, opcode) == 0)
