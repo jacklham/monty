@@ -34,3 +34,7 @@ void swap(stack_t **stack, unsigned int line_number)
  *
  * @line_number: The line Number
  */
+void nop(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	return;
+}
