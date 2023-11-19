@@ -4,7 +4,7 @@
  * file_handle - function that handle file
  *
  * @file_name: The file Name
-*/
+ */
 
 void file_handle(char *file_name)
 {
@@ -29,7 +29,7 @@ void file_handle(char *file_name)
  * read_file - function that extract the line from file
  *
  * @fptr: The File
-*/
+ */
 
 void read_file(FILE *fptr)
 {
@@ -57,7 +57,7 @@ void read_file(FILE *fptr)
  * @line: The size of line
  *
  * Return: The type type data structre
-*/
+ */
 
 int parse_line(char *buffer, int line, int type_ds)
 {
@@ -93,7 +93,7 @@ int parse_line(char *buffer, int line, int type_ds)
  * @line: The line
  *
  * @type_ds: Type of DS
-*/
+ */
 
 void choose_op(char *opcode, char *value, int line, int type_ds)
 {
@@ -125,21 +125,20 @@ void choose_op(char *opcode, char *value, int line, int type_ds)
 
 /**
  * execut - function that execute the operation
- *
- * @op: The function which will execute
- *
- * @opcode: The name of function
- *
- * @value: The value of element
+ * @f: function pointer
+ * @opcode: char pointer
+ * @value: value of the number
  *
  * @line: The number of line
  *
  * @type_ds: stack or queue
-*/
+ */
 
-void execut(void (*f)(stack_t **stack, unsigned int line) , char *opcode, char *value, int line, int type_ds)
+void execut(void (*f)(stack_t **stack, unsigned int line),
+		char *opcode, char *value, int line, int type_ds)
 {
 	stack_t *new_node;
+
 	int i, assign = 1;
 
 	if (strcmp(opcode, "push") == 0)
@@ -150,10 +149,11 @@ void execut(void (*f)(stack_t **stack, unsigned int line) , char *opcode, char *
 			value = value + 1;
 			assign = -1;
 		}
-		
+
 		if (value == NULL)
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", line); exit(EXIT_FAILURE);
+			fprintf(stderr, "L%d: usage: push integer\n", line);
+			exit(EXIT_FAILURE);
 		}
 
 		for (i = 0; value[i] != '\0'; i++)

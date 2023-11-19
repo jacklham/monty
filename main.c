@@ -1,13 +1,12 @@
 #include "monty.h"
 
-stack_t *top = NULL;
 /**
  * main - function for monty program
- * @arc: num of arguments
- * @arv: opcode file
+ * @argc: num of arguments
+ * @argv: opcode file
  * Return: 0
  */
-int main(int arc, char **arv)
+int main(int argc, char **argv)
 {
 	if (arc != 2)
 	{

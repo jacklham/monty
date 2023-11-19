@@ -6,7 +6,7 @@
  * @stack: The pointer to linked list
  *
  * @line_number: The line number
-*/
+ */
 void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
@@ -33,4 +33,4 @@ void swap(stack_t **stack, unsigned int line_number)
  * @stack: The pointer to linked list
  *
  * @line_number: The line Number
-*/
+ */

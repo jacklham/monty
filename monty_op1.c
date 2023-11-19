@@ -6,7 +6,7 @@
  * @data: The data of node
  *
  * Return: The pointer to node
-*/
+ */
 stack_t *create_node(int data)
 {
 	stack_t *new_node;
@@ -75,7 +75,7 @@ void pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
  * @stack: pointer to the linked list stack
  *
  * @line_number: number of line
-*/
+ */
 void pint(stack_t **stack, unsigned int line_number)
 {
 	if (!stack || *stack == NULL)
@@ -83,7 +83,7 @@ void pint(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	
+
 	fprintf(stdout, "%d\n", (*stack)->n);
 }
 
@@ -93,7 +93,7 @@ void pint(stack_t **stack, unsigned int line_number)
  * @stack: pointer to the linked list
  *
  * @line_number: number of line
-*/
+ */
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
@@ -110,4 +110,3 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	free(temp);
 }
-
