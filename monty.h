@@ -61,8 +61,10 @@ typedef struct global_variable
 void file_handle(char *file_name);
 void read_file(FILE *fptr);
 int parse_line(char *buffer, int line, int type_ds);
-void choose_op(char *opcode, char *value,int line, int type_ds);
-void execut(void (*f)(stack_t **stack, unsigned int line_number), char *opcode, char *value, int line, int type_ds);
+void choose_op(char *opcode, char *value, int line, int type_ds);
+void execut(
+		void (*f)(stack_t **stack, unsigned int line_number),
+		char *opcode, char *value, int line, int type_ds);
 /*fucntions monty opcode*/
 stack_t *create_node(int data);
 void push(stack_t **stack, unsigned int line_number);
@@ -70,22 +72,5 @@ void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
-/**func maths
-void subtractTopTwo(stack_t **stack, unsigned int line_number);
-void _add(stack_t **stack, unsigned int line_number);
-void multiplyTopTwo(stack_t **stack, unsigned int line_number);
-void divideTopTwo(stack_t **stack, unsigned int line_number);
-void moduloTopTwo(stack_t **stack, unsigned int line_number);
-*/
-
-/**Utility functions
-void free_dlistint(stack_t *head);
-void dobfree(stack_t **stack);
-void dobfree2(stack_t **stack);
-int _isalpha(int c);
-
-*Function to handle files
-void file(char *the_file);
-*/
 
 #endif
