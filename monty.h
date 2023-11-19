@@ -1,15 +1,13 @@
 #ifndef MONTY_H
 #define MONTY_H
-<<<<<<< HEAD
-=======
 
->>>>>>> 3d5b5420a772027989e7744254a31d9148d8f812
-
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
+#include <stddef.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -27,6 +25,8 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+extern stack_t *top;
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -36,7 +36,7 @@ typedef struct stack_s
  * for stack, queues, LIFO, FIFO
  */
 typedef struct instruction_s
-
+{
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
@@ -56,27 +56,20 @@ typedef struct global_variable
 	char *buffer;
 } global_var;
 
-extern global_var var_global;
 
 /*Function to Handle file*/
 void file_handle(char *file_name);
 void read_file(FILE *fptr);
 int parse_line(char *buffer, int line, int type_ds);
-
-<<<<<<< HEAD
-/*fucntions monty*/
+void choose_op(char *opcode, char *value,int line, int type_ds);
+void execut(void (*f)(stack_t **stack, unsigned int line_number), char *opcode, char *value, int line, int type_ds);
+/*fucntions monty opcode*/
+stack_t *create_node(int data);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-=======
-/*fucntions monty
->>>>>>> 3d5b5420a772027989e7744254a31d9148d8f812
-void _add(stack_t **stack, unsigned int line_number);
-void _nop(stack_t **stack, unsigned int line_number);
-void _print_string(stack_t **stk, unsigned int line_num);
-void _rotate_left(stack_t **stack, unsigned int line_num);
-void _rotate_right(stack_t **stack, unsigned int line_num);
-*/
-
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 /**func maths
 void subtractTopTwo(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);

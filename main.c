@@ -1,4 +1,6 @@
 #include "monty.h"
+
+stack_t *top = NULL;
 /**
  * main - function for monty program
  * @arc: num of arguments

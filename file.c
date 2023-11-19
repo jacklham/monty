@@ -3,7 +3,7 @@
 /**
  * file_handle - function that handle file
  *
- * @file_name: The file Name 
+ * @file_name: The file Name
 */
 
 void file_handle(char *file_name)
@@ -41,21 +41,22 @@ void read_file(FILE *fptr)
 	for (line = 1; getline(&buffer, &line_size, fptr) != -1; line++)
 	{
 		/*To take the opcode from buffer*/
-		type_ds = parse_line(buffer, line, type_ds);	
+		type_ds = parse_line(buffer, line, type_ds);
 	}
-	
 	free(buffer);
 }
 
 /**
- * parse_file - function that tack line and extract the opcode
+ * parse_line - function that tack line and extract the opcode
  *
  * @buffer: The line
  *
  * @type_ds: That detemine the type of ds if 0 it be stack
  * if 1 it be queue
  *
- * @line_size: The size of line
+ * @line: The size of line
+ *
+ * Return: The type type data structre
 */
 
 int parse_line(char *buffer, int line, int type_ds)
@@ -78,19 +79,98 @@ int parse_line(char *buffer, int line, int type_ds)
 	if (strcmp(opcode, "queue") == 0)
 		return (1);
 
-	run_opcode(opcode, value, line, type_ds);
+	choose_op(opcode, value, line, type_ds);
 	return (type_ds);
 }
 
 /**
- * run_opcode - function to run the opcode
+ * choose_op - function That choose The right operation
  *
- * @value: The element which we use in stack
+ * @opcode: The opcode
  *
- * @line: The line of instruction
+ * @value: The Value That should you use
  *
- * @type_ds: if 0 use stack and if 1 use queue
- * */
-void run_opcode(char *opcode, char *value, int line, int type_ds)
+ * @line: The line
+ *
+ * @type_ds: Type of DS
+*/
+
+void choose_op(char *opcode, char *value, int line, int type_ds)
 {
+	int i, error = 1;
+
+	instruction_t operation[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{NULL, NULL}
+	};
+
+	for (i = 0; operation[i].opcode != NULL; i++)
+	{
+		if (strcmp(operation[i].opcode, opcode) == 0)
+		{
+			execut(operation[i].f, opcode, value, line, type_ds);
+			error = 0;
+		}
+	}
+	if (error == 1)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line, opcode);
+		exit(EXIT_FAILURE);
+	}
+}
+
+/**
+ * execut - function that execute the operation
+ *
+ * @op: The function which will execute
+ *
+ * @opcode: The name of function
+ *
+ * @value: The value of element
+ *
+ * @line: The number of line
+ *
+ * @type_ds: stack or queue
+*/
+
+void execut(void (*f)(stack_t **stack, unsigned int line) , char *opcode, char *value, int line, int type_ds)
+{
+	stack_t *new_node;
+	int i, assign = 1;
+
+	if (strcmp(opcode, "push") == 0)
+	{
+		/*Handle Negative*/
+		if (value != NULL && value[0] == '-')
+		{
+			value = value + 1;
+			assign = -1;
+		}
+		
+		if (value == NULL)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line); exit(EXIT_FAILURE);
+		}
+
+		for (i = 0; value[i] != '\0'; i++)
+		{
+			if (isdigit(value[i]) == 0)
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", line);
+				exit(EXIT_FAILURE);
+			}
+		}
+
+		new_node = create_node(atoi(value) * assign);
+		if (type_ds == 0)
+			(*f)(&new_node, line);
+	}
+	else
+	{
+		(*f)(&top, line);
+	}
 }
