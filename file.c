@@ -104,6 +104,8 @@ void choose_op(char *opcode, char *value, int line, int type_ds)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"add", add},
+		{"sub", sub},
 		{"swap", swap},
 		{"nop", nop},
 		{NULL, NULL}
