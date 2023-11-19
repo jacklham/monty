@@ -108,6 +108,8 @@ void choose_op(char *opcode, char *value, int line, int type_ds)
 		{"sub", sub},
 		{"swap", swap},
 		{"nop", nop},
+		{"div", div_node},
+		{"mul", mul_list},
 		{NULL, NULL}
 	};
 
